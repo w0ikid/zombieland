@@ -1,3 +1,38 @@
+server:
+  port: ${SERVER_PORT:8084}
+
 spring:
-  application:
-    name: zombie-manager
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5433}/${POSTGRES_SERVICE_DB:zombie_manager}
+    username: ${POSTGRES_USER:danial}
+    password: ${POSTGRES_PASSWORD:yarmaq_pass}
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${ZITADEL_DOMAIN_BACKEND:http://zitadel.localhost:8080}
+          jwk-set-uri: ${ZITADEL_JWKS_URL:http://zitadel.localhost:8080/oauth/v2/keys}
+
+services:
+  accounts-service:
+    url: ${ACCOUNTS_SERVICE_URL:http://localhost:8081}
+
+logging:
+  level:
+    root: INFO
+    org.springframework: WARN
+    org.hibernate: WARN
+    kz.kbtu.yarmaq: DEBUG
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(%-5level) %clr(%logger{36}){cyan} %clr(:){faint} %m%n%wEx"

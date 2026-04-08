@@ -92,6 +92,36 @@ services:
       - "traefik.http.routers.notifications.priority=300"
       - traefik.docker.network=zitadel
 
+  zombie-manager:
+    build:
+      context: ..
+      dockerfile: apps/zombie-manager/Dockerfile
+    container_name: yarmaq-zombie-manager
+    restart: unless-stopped
+    extra_hosts:
+      - "zitadel.localhost:172.18.0.1"
+    volumes:
+      - ../secrets:/app/secrets:ro
+    env_file:
+      - ../.env
+    environment:
+      - SERVER_PORT=8084
+      - POSTGRES_HOST=infra-postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_SERVICE_DB=zombie_manager
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - ZITADEL_JWKS_URL=http://zitadel.localhost:8080/oauth/v2/keys
+    networks:
+      - zitadel
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.zombies.rule=Host(`${ZITADEL_DOMAIN}`) && PathPrefix(`/api/v1/districts`)"
+      - "traefik.http.services.zombies.loadbalancer.server.port=8084"
+      - "traefik.http.routers.zombies.priority=300"
+      - traefik.docker.network=zitadel
+
 networks:
   zitadel:
     external: true

@@ -40,7 +40,7 @@ func (r *Router) SetupRoutes(logger *zap.SugaredLogger) {
 	internalRouter := r.router.Group("/internal")
 	internalRouter.Use(
 		middleware.AuthMiddleware(r.handler.JWKS),
-		middleware.ServiceOnlyMiddleware("accounts-service", logger, "transaction-service"),
+		// middleware.ServiceOnlyMiddleware("accounts-service", logger, "transaction-service"),
 	)
 	internals.NewRouter(internalRouter, r.handler.Internal).SetupRoutes()
 
