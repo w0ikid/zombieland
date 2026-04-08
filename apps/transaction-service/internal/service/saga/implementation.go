@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models"
 	"go.uber.org/zap"
 )
 
@@ -38,18 +38,18 @@ func (s *implementation) GetSteps(ctx context.Context, transactionID uuid.UUID) 
 
 func (s *implementation) UpdateStepStatus(ctx context.Context, stepID uuid.UUID, status string, errStr *string) error {
 	s.logger.Infow("updating saga step status", "id", stepID, "status", status)
-	
-    step, err := s.repo.GetByID(ctx, stepID)
-    if err != nil {
-        return err
-    }
-    if step == nil {
-        return fmt.Errorf("saga step not found: %s", stepID)
-    }
 
-    step.Status = status
-    step.Error = errStr
-    
-    _, err = s.repo.Update(ctx, *step)
-    return err
+	step, err := s.repo.GetByID(ctx, stepID)
+	if err != nil {
+		return err
+	}
+	if step == nil {
+		return fmt.Errorf("saga step not found: %s", stepID)
+	}
+
+	step.Status = status
+	step.Error = errStr
+
+	_, err = s.repo.Update(ctx, *step)
+	return err
 }

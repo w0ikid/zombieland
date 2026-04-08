@@ -5,11 +5,11 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/ctxkeys"
-	"github.com/w0ikid/yarmaq/pkg/errs"
-	"github.com/w0ikid/yarmaq/pkg/exchange"
-	"github.com/w0ikid/yarmaq/pkg/httpclient/accounts"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/ctxkeys"
+	"github.com/w0ikid/zombieland/pkg/errs"
+	"github.com/w0ikid/zombieland/pkg/exchange"
+	"github.com/w0ikid/zombieland/pkg/httpclient/accounts"
+	"github.com/w0ikid/zombieland/pkg/models"
 	"go.uber.org/zap"
 )
 

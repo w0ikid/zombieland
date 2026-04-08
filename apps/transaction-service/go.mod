@@ -1,14 +1,14 @@
-module github.com/w0ikid/yarmaq/apps/transaction-service
+module github.com/w0ikid/zombieland/apps/transaction-service
 
 go 1.25.5
 
-replace github.com/w0ikid/yarmaq/pkg => ../../pkg
+replace github.com/w0ikid/zombieland/pkg => ../../pkg
 
 require (
 	github.com/gofiber/fiber/v2 v2.52.12
 	github.com/google/uuid v1.6.0
 	github.com/segmentio/kafka-go v0.4.50
-	github.com/w0ikid/yarmaq/pkg v0.0.0-20260319121120-578e950b1d1d
+	github.com/w0ikid/zombieland/pkg v0.0.0-20260319121120-578e950b1d1d
 	go.uber.org/zap v1.27.1
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.31.1

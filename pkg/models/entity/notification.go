@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type Notification struct {

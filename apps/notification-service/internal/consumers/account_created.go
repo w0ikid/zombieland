@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/segmentio/kafka-go"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models"
 	"go.uber.org/zap"
 )
 
@@ -33,10 +33,10 @@ func (h *AccountCreatedHandler) Handle(ctx context.Context, msg kafka.Message) e
 		return err
 	}
 
-	h.logger.Infow("account.created received", 
-		"id", event.ID, 
-		"user_id", event.UserID, 
-		"number", event.Number, 
+	h.logger.Infow("account.created received",
+		"id", event.ID,
+		"user_id", event.UserID,
+		"number", event.Number,
 		"currency", event.Currency,
 	)
 

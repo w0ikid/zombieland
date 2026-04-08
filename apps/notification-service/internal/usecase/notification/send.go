@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/apps/notification-service/internal/service/notification"
-	"github.com/w0ikid/yarmaq/apps/notification-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/apps/notification-service/internal/service/notification"
+	"github.com/w0ikid/zombieland/apps/notification-service/internal/usecase"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type SendNotificationUsecase struct {

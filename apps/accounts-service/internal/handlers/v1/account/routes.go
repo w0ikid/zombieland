@@ -2,8 +2,8 @@ package account
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/w0ikid/yarmaq/pkg/middleware"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/middleware"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type Router struct {

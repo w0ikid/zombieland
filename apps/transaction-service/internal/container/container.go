@@ -3,13 +3,13 @@ package container
 import (
 	"context"
 
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/repo"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase/outbox"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase/transaction"
-	"github.com/w0ikid/yarmaq/pkg/httpclient/accounts"
-	"github.com/w0ikid/yarmaq/pkg/zitadel"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase/outbox"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase/transaction"
+	"github.com/w0ikid/zombieland/pkg/httpclient/accounts"
+	"github.com/w0ikid/zombieland/pkg/zitadel"
 	"go.uber.org/zap"
 )
 
@@ -40,8 +40,8 @@ func NewContainer(
 	}
 
 	return &Container{
-		logger: logger,
-		Services: services,
+		logger:            logger,
+		Services:          services,
 		OutboxDomain:      outbox.NewDomain(baseusecase, services.OutboxService),
 		TransactionDomain: transaction.NewDomain(baseusecase, services.TransactionService, services.OutboxService, services.SagaService, services.AccountService),
 	}

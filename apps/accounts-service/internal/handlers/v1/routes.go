@@ -4,11 +4,11 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/w0ikid/yarmaq/pkg/middleware"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/internals"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/ledger"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/webhook"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/internals"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/ledger"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/webhook"
+	"github.com/w0ikid/zombieland/pkg/middleware"
 	"go.uber.org/zap"
 )
 

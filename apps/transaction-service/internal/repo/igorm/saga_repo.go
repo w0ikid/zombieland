@@ -5,8 +5,8 @@ import (
 	"errors"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/models"
-	"github.com/w0ikid/yarmaq/pkg/models/entity"
+	"github.com/w0ikid/zombieland/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models/entity"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -59,7 +59,7 @@ func (r *SagaStepRepo) GetByTransactionID(ctx context.Context, transactionID uui
 	if err != nil {
 		return nil, err
 	}
-	
+
 	dtos := make([]models.SagaStep, len(entities))
 	for i, e := range entities {
 		dtos[i] = e.ToDTO()

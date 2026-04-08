@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	"github.com/w0ikid/yarmaq/pkg/models/entity"
+	"github.com/w0ikid/zombieland/pkg/models/entity"
 )
 
 type Publisher interface {

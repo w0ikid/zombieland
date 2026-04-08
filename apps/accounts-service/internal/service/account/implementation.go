@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/errs"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/errs"
+	"github.com/w0ikid/zombieland/pkg/models"
 	"go.uber.org/zap"
 )
 

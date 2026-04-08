@@ -9,22 +9,22 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"go.uber.org/zap"
 
-	"github.com/w0ikid/yarmaq/pkg/config"
-	"github.com/w0ikid/yarmaq/pkg/jwks"
-	"github.com/w0ikid/yarmaq/pkg/zitadel"
+	"github.com/w0ikid/zombieland/pkg/config"
+	"github.com/w0ikid/zombieland/pkg/jwks"
+	"github.com/w0ikid/zombieland/pkg/zitadel"
 
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/repo"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/repo/igorm"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/repo/igorm"
 
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/container"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/handlers"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/handlers/v1/transaction"
-	"github.com/w0ikid/yarmaq/pkg/httpclient"
-	"github.com/w0ikid/yarmaq/pkg/httpclient/accounts"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/container"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/handlers"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/handlers/v1/transaction"
+	"github.com/w0ikid/zombieland/pkg/httpclient"
+	"github.com/w0ikid/zombieland/pkg/httpclient/accounts"
 
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/consumers"
-	kafkamodule "github.com/w0ikid/yarmaq/pkg/kafka_module"
-	"github.com/w0ikid/yarmaq/pkg/outbox_worker"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/consumers"
+	kafkamodule "github.com/w0ikid/zombieland/pkg/kafka_module"
+	"github.com/w0ikid/zombieland/pkg/outbox_worker"
 )
 
 type App struct {

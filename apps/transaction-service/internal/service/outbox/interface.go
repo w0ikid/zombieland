@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type OutboxRepo interface {
@@ -12,5 +12,3 @@ type OutboxRepo interface {
 	GetAll(ctx context.Context) ([]models.Outbox, error)
 	Delete(ctx context.Context, id uuid.UUID) error
 }
-
-

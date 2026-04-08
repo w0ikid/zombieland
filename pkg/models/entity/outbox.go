@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type Outbox struct {
@@ -40,5 +40,5 @@ func FromOutboxDTO(o models.Outbox) Outbox {
 }
 
 func (Outbox) TableName() string {
-    return "outbox"
+	return "outbox"
 }

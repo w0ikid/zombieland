@@ -3,7 +3,7 @@ package handlers
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	v1 "github.com/w0ikid/yarmaq/apps/notification-service/internal/handlers/v1"
+	v1 "github.com/w0ikid/zombieland/apps/notification-service/internal/handlers/v1"
 	"go.uber.org/zap"
 )
 

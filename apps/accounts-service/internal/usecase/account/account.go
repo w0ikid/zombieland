@@ -1,10 +1,10 @@
 package account
 
 import (
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/outbox"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/users"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/outbox"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/users"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase"
 )
 
 type AccountDomain struct {

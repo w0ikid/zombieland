@@ -3,18 +3,18 @@ package handlers
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	v1 "github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1"
+	v1 "github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1"
 	"go.uber.org/zap"
 )
 
 type Router struct {
-	app *fiber.App
+	app      *fiber.App
 	handlers *Handlers
 }
 
 func NewRouter(app *fiber.App, handlers *Handlers) *Router {
 	return &Router{
-		app: app,
+		app:      app,
 		handlers: handlers,
 	}
 }

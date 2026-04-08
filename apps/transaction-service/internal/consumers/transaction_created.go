@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 
 	"github.com/segmentio/kafka-go"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models"
 	"go.uber.org/zap"
 )
 

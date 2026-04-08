@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/pkg/models"
-	"github.com/w0ikid/yarmaq/pkg/models/entity"
+	"github.com/w0ikid/zombieland/pkg/models"
+	"github.com/w0ikid/zombieland/pkg/models/entity"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )

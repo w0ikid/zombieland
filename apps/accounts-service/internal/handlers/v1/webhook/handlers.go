@@ -2,7 +2,7 @@ package webhook
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/account"
 	"go.uber.org/zap"
 )
 

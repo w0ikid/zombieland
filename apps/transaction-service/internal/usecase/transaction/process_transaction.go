@@ -4,11 +4,11 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/account"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/saga"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/transaction"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/account"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/saga"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/transaction"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type ProcessTransactionSagaUsecase struct {
@@ -53,7 +53,7 @@ func (uc *ProcessTransactionSagaUsecase) Execute(ctx context.Context, event mode
 	if err != nil {
 		return err
 	}
-	
+
 	err = uc.AccountService.Hold(ctx, event.FromAccountID, txID, event.Amount)
 	if err != nil {
 		errStr := err.Error()

@@ -1,8 +1,8 @@
 package notification
 
 import (
-	"github.com/w0ikid/yarmaq/apps/notification-service/internal/service/notification"
-	"github.com/w0ikid/yarmaq/apps/notification-service/internal/usecase"
+	"github.com/w0ikid/zombieland/apps/notification-service/internal/service/notification"
+	"github.com/w0ikid/zombieland/apps/notification-service/internal/usecase"
 )
 
 type NotificationDomain struct {

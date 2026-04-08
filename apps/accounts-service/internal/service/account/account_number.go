@@ -1,9 +1,10 @@
 package account
 
 import (
-	"math/big"
-	"github.com/w0ikid/yarmaq/pkg/models"
 	"fmt"
+	"math/big"
+
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 func calcCheckDigits(bban string) string {
@@ -21,11 +22,11 @@ func calcCheckDigits(bban string) string {
 }
 
 func generateAccountNumber(currency string, seq int64) (string, error) {
-    c, ok := models.GetCurrency(currency)
-    if !ok {
-        return "", fmt.Errorf("unsupported currency: %s", currency)
-    }
-    bban := fmt.Sprintf("02%s%08d", c.Numeric, seq)
-    check := calcCheckDigits(bban)
-    return fmt.Sprintf("KZ%s%s", check, bban), nil
+	c, ok := models.GetCurrency(currency)
+	if !ok {
+		return "", fmt.Errorf("unsupported currency: %s", currency)
+	}
+	bban := fmt.Sprintf("02%s%08d", c.Numeric, seq)
+	check := calcCheckDigits(bban)
+	return fmt.Sprintf("KZ%s%s", check, bban), nil
 }

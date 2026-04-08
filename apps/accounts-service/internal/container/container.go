@@ -3,13 +3,13 @@ package container
 import (
 	"context"
 
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/repo"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/ledger"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/outbox"
-	"github.com/w0ikid/yarmaq/pkg/zitadel"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/ledger"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/outbox"
+	"github.com/w0ikid/zombieland/pkg/zitadel"
 	"go.uber.org/zap"
 )
 

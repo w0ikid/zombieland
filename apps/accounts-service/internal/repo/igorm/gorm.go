@@ -1,7 +1,7 @@
 package igorm
 
 import (
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/repo"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )

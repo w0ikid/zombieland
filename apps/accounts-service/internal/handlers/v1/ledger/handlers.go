@@ -3,7 +3,7 @@ package ledger
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/ledger"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/ledger"
 	"go.uber.org/zap"
 )
 

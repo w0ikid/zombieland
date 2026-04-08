@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/outbox"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/transaction"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/outbox"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/transaction"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type CreateTransactionUsecase struct {
@@ -44,12 +44,12 @@ func (uc *CreateTransactionUsecase) Execute(ctx context.Context, transaction mod
 	}
 
 	payload, err := json.Marshal(models.TransactionCreatedEvent{
-		ID:            created.ID.String(),
-		Type:          created.Type,
-		FromAccountID: created.FromAccountID.String(),
-		ToAccountID:   created.ToAccountID.String(),
-		Amount:        created.Amount,
-		Currency:      created.Currency,
+		ID:             created.ID.String(),
+		Type:           created.Type,
+		FromAccountID:  created.FromAccountID.String(),
+		ToAccountID:    created.ToAccountID.String(),
+		Amount:         created.Amount,
+		Currency:       created.Currency,
 		TargetAmount:   *created.TargetAmount,
 		TargetCurrency: *created.TargetCurrency,
 		ExchangeRate:   *created.ExchangeRate,

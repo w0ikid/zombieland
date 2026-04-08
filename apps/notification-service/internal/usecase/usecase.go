@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"github.com/w0ikid/yarmaq/apps/notification-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/notification-service/internal/repo"
 	"go.uber.org/zap"
 )
 

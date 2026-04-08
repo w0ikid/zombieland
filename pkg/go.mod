@@ -1,4 +1,4 @@
-module github.com/w0ikid/yarmaq/pkg
+module github.com/w0ikid/zombieland/pkg
 
 go 1.25.5
 

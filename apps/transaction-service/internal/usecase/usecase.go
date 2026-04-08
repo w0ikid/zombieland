@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/repo"
 	"go.uber.org/zap"
 )
 

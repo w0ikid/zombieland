@@ -2,11 +2,11 @@ package account
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase/ledger"
-	"github.com/w0ikid/yarmaq/pkg/ctxkeys"
-	"github.com/w0ikid/yarmaq/pkg/errs"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase/ledger"
+	"github.com/w0ikid/zombieland/pkg/ctxkeys"
+	"github.com/w0ikid/zombieland/pkg/errs"
+	"github.com/w0ikid/zombieland/pkg/models"
 	"go.uber.org/zap"
 )
 

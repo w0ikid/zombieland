@@ -9,22 +9,22 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"go.uber.org/zap"
 
-	"github.com/w0ikid/yarmaq/pkg/config"
-	"github.com/w0ikid/yarmaq/pkg/jwks"
-	"github.com/w0ikid/yarmaq/pkg/zitadel"
+	"github.com/w0ikid/zombieland/pkg/config"
+	"github.com/w0ikid/zombieland/pkg/jwks"
+	"github.com/w0ikid/zombieland/pkg/zitadel"
 
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/repo"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/repo/igorm"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/repo/igorm"
 
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/container"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/internals"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/ledger"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/handlers/v1/webhook"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/container"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/internals"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/ledger"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/handlers/v1/webhook"
 
-	kafkamodule "github.com/w0ikid/yarmaq/pkg/kafka_module"
-	"github.com/w0ikid/yarmaq/pkg/outbox_worker"
+	kafkamodule "github.com/w0ikid/zombieland/pkg/kafka_module"
+	"github.com/w0ikid/zombieland/pkg/outbox_worker"
 )
 
 type App struct {
@@ -88,7 +88,7 @@ func NewApp(ctx context.Context, cfg config.Config, logger *zap.SugaredLogger) (
 
 	// kafka consumers
 	// consumers := []*kafkamodule.Consumer{
-		
+
 	// }
 	// Репозитории
 	repositories := igorm.NewGormRepository(pg.DB(), appLogger)
@@ -128,8 +128,6 @@ func NewApp(ctx context.Context, cfg config.Config, logger *zap.SugaredLogger) (
 			appLogger.Errorw("panic recovered", "error", e)
 		},
 	}))
-
-	
 
 	// Fiber router
 	router := handlers.NewRouter(fapp, h)

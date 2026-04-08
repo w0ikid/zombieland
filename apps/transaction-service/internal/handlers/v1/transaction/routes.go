@@ -2,7 +2,7 @@ package transaction
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/w0ikid/yarmaq/pkg/jwks"
+	"github.com/w0ikid/zombieland/pkg/jwks"
 )
 
 type Router struct {

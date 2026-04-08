@@ -1,14 +1,14 @@
 package service
 
 import (
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/repo"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/account"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/outbox"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/saga"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/transaction"
-	"github.com/w0ikid/yarmaq/pkg/exchange"
-	"github.com/w0ikid/yarmaq/pkg/httpclient/accounts"
-	"github.com/w0ikid/yarmaq/pkg/zitadel"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/account"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/outbox"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/saga"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/transaction"
+	"github.com/w0ikid/zombieland/pkg/exchange"
+	"github.com/w0ikid/zombieland/pkg/httpclient/accounts"
+	"github.com/w0ikid/zombieland/pkg/zitadel"
 	"go.uber.org/zap"
 )
 

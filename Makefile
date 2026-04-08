@@ -126,6 +126,9 @@ apps-up:
 	$(DOCKER_COMPOSE) -p $(APP_PROJECT) -f $(APPS_COMPOSE) up -d --build
 
 apps-down:
+	$(DOCKER_COMPOSE) -p $(APP_PROJECT) -f $(APPS_COMPOSE) down
+
+apps-down-v:
 	$(DOCKER_COMPOSE) -p $(APP_PROJECT) -f $(APPS_COMPOSE) down -v
 
 apps-logs:

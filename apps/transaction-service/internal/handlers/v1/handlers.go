@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/handlers/v1/transaction"
-	"github.com/w0ikid/yarmaq/pkg/jwks"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/handlers/v1/transaction"
+	"github.com/w0ikid/zombieland/pkg/jwks"
 	"go.uber.org/zap"
 )
 

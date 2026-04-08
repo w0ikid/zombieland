@@ -1,12 +1,12 @@
 package service
 
 import (
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/repo"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/ledger"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/outbox"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/users"
-	"github.com/w0ikid/yarmaq/pkg/zitadel"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/repo"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/ledger"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/outbox"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/users"
+	"github.com/w0ikid/zombieland/pkg/zitadel"
 	"go.uber.org/zap"
 )
 

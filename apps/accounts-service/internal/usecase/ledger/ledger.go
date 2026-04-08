@@ -1,8 +1,8 @@
 package ledger
 
 import (
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/ledger"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/ledger"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase"
 )
 
 type LedgerDomain struct {

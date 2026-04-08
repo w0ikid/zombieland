@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/account"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/service/outbox"
-	"github.com/w0ikid/yarmaq/apps/accounts-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/account"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/service/outbox"
+	"github.com/w0ikid/zombieland/apps/accounts-service/internal/usecase"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type UpdateBalanceUsecase struct {

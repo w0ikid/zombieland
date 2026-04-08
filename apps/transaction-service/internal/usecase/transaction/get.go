@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/transaction"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase"
-	"github.com/w0ikid/yarmaq/pkg/models"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/transaction"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase"
+	"github.com/w0ikid/zombieland/pkg/models"
 )
 
 type GetTransactionUsecase struct {

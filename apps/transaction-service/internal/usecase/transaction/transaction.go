@@ -1,11 +1,11 @@
 package transaction
 
 import (
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/account"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/outbox"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/saga"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/service/transaction"
-	"github.com/w0ikid/yarmaq/apps/transaction-service/internal/usecase"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/account"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/outbox"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/saga"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/service/transaction"
+	"github.com/w0ikid/zombieland/apps/transaction-service/internal/usecase"
 )
 
 type TransactionDomain struct {
