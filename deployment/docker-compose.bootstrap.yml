@@ -1,0 +1,30 @@
+name: yarmaq-bootstrap
+
+services:
+  zitadel-bootstrap:
+    image: alpine/curl:latest
+    container_name: yarmaq-bootstrap
+    volumes:
+      - zitadel-bootstrap:/zitadel/bootstrap:ro
+      - ../secrets:/secrets:rw
+      - ./init-zitadel/bootstrap.sh:/bootstrap.sh:ro
+    entrypoint: ["/bin/sh", "/bootstrap.sh"]
+    environment:
+      ZITADEL_INTERNAL_URL: http://zitadel-api:8080
+      ZITADEL_HOST: zitadel.localhost:8080
+      PAT_FILE: /zitadel/bootstrap/login-client.pat
+      SECRETS_DIR: /secrets
+      WEBHOOK_URL: http://yarmaq-accounts-service:8081/api/v1/webhook/sync
+    networks:
+      - zitadel
+
+volumes:
+  zitadel-bootstrap:
+    external: true
+    name: yarmaq-zitadel_zitadel-bootstrap
+
+networks:
+  zitadel:
+    external: true
+    name: zitadel
+
