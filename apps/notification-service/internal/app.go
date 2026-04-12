@@ -92,12 +92,25 @@ func NewApp(ctx context.Context, cfg config.Config, logger *zap.SugaredLogger) (
 		appLogger,
 	)
 
+	districtCriticalHandler := consumers.NewDistrictCriticalHandler(
+		&cont.NotificationDomain.SendUsecase,
+		cont.Services.UsersService,
+		appLogger,
+	)
+
 	appConsumers := []*kafkamodule.Consumer{
 		kafkamodule.New(
 			cfg.Kafka.Brokers,
 			"account.created",
 			"account-service",
 			accountCreatedHandler,
+			appLogger,
+		),
+		kafkamodule.New(
+			cfg.Kafka.Brokers,
+			"district.critical",
+			"notification-service",
+			districtCriticalHandler,
 			appLogger,
 		),
 	}

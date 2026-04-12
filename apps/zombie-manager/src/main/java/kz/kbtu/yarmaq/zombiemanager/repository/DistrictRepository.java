@@ -9,5 +9,4 @@ import java.util.UUID;
 
 @Repository
 public interface DistrictRepository extends JpaRepository<District, Integer> {
-    Optional<District> findByYarmaqAccountId(UUID yarmaqAccountId);
 }

@@ -111,7 +111,9 @@ services:
       - POSTGRES_SERVICE_DB=zombie_manager
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - KAFKA_BROKERS=kafka:29092
       - ZITADEL_JWKS_URL=http://zitadel.localhost:8080/oauth/v2/keys
+      - ACCOUNTS_SERVICE_URL=http://yarmaq-accounts-service:8081
     networks:
       - zitadel
       - default

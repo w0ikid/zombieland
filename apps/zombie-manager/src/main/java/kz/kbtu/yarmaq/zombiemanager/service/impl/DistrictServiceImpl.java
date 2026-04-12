@@ -1,12 +1,12 @@
 package kz.kbtu.yarmaq.zombiemanager.service.impl;
 
-import kz.kbtu.yarmaq.zombiemanager.client.AccountClient;
 import kz.kbtu.yarmaq.zombiemanager.domain.District;
-import kz.kbtu.yarmaq.zombiemanager.dto.AccountResponse;
 import kz.kbtu.yarmaq.zombiemanager.dto.DistrictDTO;
 import kz.kbtu.yarmaq.zombiemanager.dto.ResourceDTO;
+import kz.kbtu.yarmaq.zombiemanager.dto.DistrictCriticalEvent;
 import kz.kbtu.yarmaq.zombiemanager.repository.DistrictRepository;
 import kz.kbtu.yarmaq.zombiemanager.service.DistrictService;
+import kz.kbtu.yarmaq.zombiemanager.producer.DistrictKafkaProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -24,7 +23,7 @@ import java.util.stream.Collectors;
 public class DistrictServiceImpl implements DistrictService {
 
     private final DistrictRepository districtRepository;
-    private final AccountClient accountClient;
+    private final DistrictKafkaProducer districtKafkaProducer;
 
     @Override
     @Transactional
@@ -40,24 +39,9 @@ public class DistrictServiceImpl implements DistrictService {
 
         log.info("Creating district: {} for owner: {}", dto.getName(), ownerId);
 
-        // Verify account exists in accounts-service and get its ID
-        UUID yarmaqAccountId;
-        try {
-            AccountResponse account = accountClient.getAccountByTypeAndCurrency(
-                    "USER",
-                    "KZT"
-            );
-            yarmaqAccountId = account.getId();
-            log.info("Linked yarmaq account found: {}", yarmaqAccountId);
-        } catch (Exception e) {
-            log.error("Failed to verify yarmaq account for user {}: {}", ownerId, e.getMessage());
-            throw new RuntimeException("Could not verify Yarmaq account: " + e.getMessage());
-        }
-
         District district = District.builder()
                 .name(dto.getName())
                 .owner(ownerId)
-                .yarmaqAccountId(yarmaqAccountId)
                 .lat(dto.getLat())
                 .lng(dto.getLng())
                 .survivalIndex(dto.getSurvivalIndex() != null ? dto.getSurvivalIndex() : 100)
@@ -65,6 +49,11 @@ public class DistrictServiceImpl implements DistrictService {
                 .build();
 
         District saved = districtRepository.save(district);
+
+        if (saved.getSurvivalIndex() < 40) {
+            sendCriticalNotification(saved);
+        }
+
         return mapToDTO(saved);
     }
 
@@ -74,14 +63,6 @@ public class DistrictServiceImpl implements DistrictService {
         return districtRepository.findById(id)
                 .map(this::mapToDTO)
                 .orElseThrow(() -> new RuntimeException("District not found with id: " + id));
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public DistrictDTO getDistrictByYarmaqAccountId(UUID yarmaqAccountId) {
-        return districtRepository.findByYarmaqAccountId(yarmaqAccountId)
-                .map(this::mapToDTO)
-                .orElseThrow(() -> new RuntimeException("District not found for account: " + yarmaqAccountId));
     }
 
     @Override
@@ -98,6 +79,7 @@ public class DistrictServiceImpl implements DistrictService {
         District district = districtRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("District not found with id: " + id));
 
+        int oldIndex = district.getSurvivalIndex();
         district.setName(dto.getName());
         district.setLat(dto.getLat());
         district.setLng(dto.getLng());
@@ -105,7 +87,22 @@ public class DistrictServiceImpl implements DistrictService {
         if (dto.getIsActive() != null) district.setIsActive(dto.getIsActive());
 
         District updated = districtRepository.save(district);
+
+        if (updated.getSurvivalIndex() < 40 && oldIndex >= 40) {
+            sendCriticalNotification(updated);
+        }
+
         return mapToDTO(updated);
+    }
+
+    private void sendCriticalNotification(District district) {
+        districtKafkaProducer.sendCriticalEvent(DistrictCriticalEvent.builder()
+                .districtId(district.getId())
+                .districtName(district.getName())
+                .survivalIndex(district.getSurvivalIndex())
+                .ownerId(district.getOwner())
+                .message("Critical survival index: " + district.getSurvivalIndex())
+                .build());
     }
 
     @Override
@@ -119,7 +116,6 @@ public class DistrictServiceImpl implements DistrictService {
                 .id(district.getId())
                 .name(district.getName())
                 .owner(district.getOwner())
-                .yarmaqAccountId(district.getYarmaqAccountId())
                 .lat(district.getLat())
                 .lng(district.getLng())
                 .survivalIndex(district.getSurvivalIndex())

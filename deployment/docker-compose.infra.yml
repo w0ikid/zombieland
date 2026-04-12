@@ -74,6 +74,7 @@ services:
       kafka-topics --create --if-not-exists --topic transaction.created --bootstrap-server kafka:29092 --partitions 1 --replication-factor 1 &&
       kafka-topics --create --if-not-exists --topic account.created --bootstrap-server kafka:29092 --partitions 1 --replication-factor 1 &&
       kafka-topics --create --if-not-exists --topic account.balance.updated --bootstrap-server kafka:29092 --partitions 1 --replication-factor 1 &&
+      kafka-topics --create --if-not-exists --topic district.critical --bootstrap-server kafka:29092 --partitions 1 --replication-factor 1 &&
       echo 'Topics created successfully'
       "
     networks:

@@ -25,9 +25,6 @@ public class District {
     @Column(nullable = false)
     private String name;
 
-    @Column(name = "yarmaq_account_id", nullable = false)
-    private UUID yarmaqAccountId;
-
     @Column(name = "owner")
     private String owner;
 

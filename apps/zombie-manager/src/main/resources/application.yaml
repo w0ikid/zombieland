@@ -11,6 +11,7 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
+    repair-on-migrate: true
 
   jpa:
     hibernate:
@@ -24,9 +25,22 @@ spring:
           issuer-uri: ${ZITADEL_DOMAIN_BACKEND:http://zitadel.localhost:8080}
           jwk-set-uri: ${ZITADEL_JWKS_URL:http://zitadel.localhost:8080/oauth/v2/keys}
 
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    template:
+      default-topic: district.critical
+
 services:
   accounts-service:
     url: ${ACCOUNTS_SERVICE_URL:http://localhost:8081}
+
+groq:
+  api:
+    key: ${GROQ_API_KEY}
+    url: ${GROQ_API_URL:https://api.groq.com/openai/v1}
 
 logging:
   level:

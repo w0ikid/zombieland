@@ -2,7 +2,7 @@
 CREATE TABLE districts (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    yarmaq_account_id UUID NOT NULL, -- Ссылка на аккаунт в твоем Go-сервисе
+    owner VARCHAR(255), -- ID владельца из JWT
     lat DOUBLE PRECISION NOT NULL,
     lng DOUBLE PRECISION NOT NULL,
     survival_index INT DEFAULT 100,

@@ -13,7 +13,6 @@ public class DistrictDTO {
     private Integer id;
     private String name;
     private String owner;
-    private UUID yarmaqAccountId;
     private Double lat;
     private Double lng;
     private Integer survivalIndex;

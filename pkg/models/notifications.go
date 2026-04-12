@@ -50,6 +50,7 @@ const (
 	TypeTransactionCreated NotificationType = "transaction.created"
 	TypeAccountCreated     NotificationType = "account.created"
 	TypeLowBalance         NotificationType = "account.low_balance"
+	TypeDistrictCritical   NotificationType = "district.critical"
 )
 
 type Notification struct {
