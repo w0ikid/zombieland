@@ -1,1 +1,35 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-color: #f7f7f7;
+  --text-color: #1a1a1a;
+  --accent-color: #d32f2f;
+  --muted-color: #757575;
+  --border-color: rgba(211, 47, 47, 0.2);
+  --grid-color: rgba(211, 47, 47, 0.05);
+  --glow-color: rgba(211, 47, 47, 0.1);
+  --scanline-color: rgba(0, 0, 0, 0.02);
+  --sidebar-bg: #ffffff;
+  --card-bg: #ffffff;
+}
+
+.dark {
+  --bg-color: #0a0a0a;
+  --text-color: #e8e0d0;
+  --accent-color: #b42020;
+  --muted-color: #666;
+  --border-color: rgba(180, 32, 32, 0.3);
+  --grid-color: rgba(180, 40, 40, 0.06);
+  --glow-color: rgba(180, 30, 30, 0.2);
+  --scanline-color: rgba(0, 0, 0, 0.03);
+  --sidebar-bg: #0a0a0a;
+  --card-bg: #0d0d0d;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

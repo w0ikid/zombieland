@@ -5,6 +5,8 @@ import kz.kbtu.yarmaq.zombiemanager.domain.District;
 import kz.kbtu.yarmaq.zombiemanager.domain.DistrictResource;
 import kz.kbtu.yarmaq.zombiemanager.domain.ResourceType;
 import kz.kbtu.yarmaq.zombiemanager.dto.SortieOutcome;
+import kz.kbtu.yarmaq.zombiemanager.dto.DistrictCriticalEvent;
+import kz.kbtu.yarmaq.zombiemanager.producer.DistrictKafkaProducer;
 import kz.kbtu.yarmaq.zombiemanager.repository.DistrictRepository;
 import kz.kbtu.yarmaq.zombiemanager.repository.DistrictResourceRepository;
 import kz.kbtu.yarmaq.zombiemanager.service.SortieService;
@@ -25,6 +27,7 @@ public class SortieServiceImpl implements SortieService {
     private final DistrictRepository districtRepository;
     private final DistrictResourceRepository resourceRepository;
     private final GroqClient groqClient;
+    private final DistrictKafkaProducer districtKafkaProducer;
 
     @Override
     @Transactional
@@ -49,6 +52,7 @@ public class SortieServiceImpl implements SortieService {
         SortieOutcome outcome = groqClient.generateOutcome(userAction);
 
         // 4. Apply resource updates and survival penalties
+        int oldSurvivalIndex = district.getSurvivalIndex();
         if (outcome.getResources() != null) {
             for (Map.Entry<String, Double> entry : outcome.getResources().entrySet()) {
                 try {
@@ -88,7 +92,20 @@ public class SortieServiceImpl implements SortieService {
             log.warn("District {} has reached 0 survival and is now INACTIVE", districtId);
         }
 
-        districtRepository.save(district);
+        District saved = districtRepository.save(district);
+
+        // 6. Check for critical survival threshold
+        if (saved.getSurvivalIndex() < 40 && oldSurvivalIndex >= 40) {
+            log.info("District {} reached critical survival status ({}). Sending notification.", saved.getName(), saved.getSurvivalIndex());
+            districtKafkaProducer.sendCriticalEvent(DistrictCriticalEvent.builder()
+                    .districtId(saved.getId())
+                    .districtName(saved.getName())
+                    .survivalIndex(saved.getSurvivalIndex())
+                    .ownerId(saved.getOwner())
+                    .message("Critical survival status after sortie: " + saved.getSurvivalIndex() + "%")
+                    .build());
+        }
+
         return outcome;
     }
 
