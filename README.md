@@ -29,7 +29,7 @@ The project follows a modern microservices architecture with a polyglot approach
 - **Deployment**: Docker Compose, Traefik
 
 ## 📺 Preview
-[![Preview video](https://img.youtube.com/vi/IJdvXi-baeE/hqdefault.jpg)](https://youtu.be/IJdvXi-baeE)
+[![Смотреть видео demo](https://img.youtube.com/vi/IJdvXi-baeE/0.jpg)](https://youtu.be/IJdvXi-baeE)
 
 ## 🚀 Quick Start
 
